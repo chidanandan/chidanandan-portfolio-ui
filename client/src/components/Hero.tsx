@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react"
 import { useEffect, useState } from "react"
-import headshot from "@assets/generated_images/Professional_developer_headshot_404d5082.png"
+import headshot from "@assets/chidu_1758191757660.jpeg"
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("")
