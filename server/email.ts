@@ -49,14 +49,22 @@ Message:
 ${formData.message}
     `;
 
-    await mailService.send({
+    const emailConfig = {
       to: 'chidutramp@gmail.com', // Your email
       from: 'chidutramp@gmail.com', // Must be verified sender in SendGrid
       subject: `Portfolio Contact: ${formData.subject}`,
       text: emailText,
       html: emailHtml,
       replyTo: formData.email
-    });
+    };
+    
+    console.log('Attempting to send email with config:', JSON.stringify({
+      to: emailConfig.to,
+      from: emailConfig.from,
+      subject: emailConfig.subject
+    }, null, 2));
+    
+    await mailService.send(emailConfig);
     
     return true;
   } catch (error: any) {
