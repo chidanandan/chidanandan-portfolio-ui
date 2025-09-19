@@ -47,15 +47,30 @@ export default function Experience() {
         "Implemented features like Continue Watching, Favorites, Watch list, Live News with social media login"
       ],
       technologies: ["React", "SSR", "PWA", "AMP", "Service Workers", "Google DFP", "Analytics Integration"]
-    }
+    },
+    {
+      company: "growthBox technologies pvt ltd.",
+      position: "Intern",
+      duration: "June 2016 - August 2016",
+      location: "Bengaluru, Karnataka, India",
+      description: "Technology company specializing in web application development",
+      achievements: [
+        "Built an insurance-based web application using ASP.NET",
+        "Developed customer registration and management modules",
+        "Implemented solutions for patients, insurance staff, and health service providers",
+        "Created sales person module for customer interaction and service delivery",
+        "Collaborated with team members on full-stack development tasks"
+      ],
+      technologies: ["ASP.NET", "C#", "SQL Server", "HTML", "CSS", "JavaScript"]
+    },
   ]
 
   return (
-    <section id="experience" className="py-20 bg-muted/30">
+    <section id="experience" className="py-16 sm:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Work Experience</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Work Experience</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             My professional journey spanning 8+ years across leading technology companies and innovative projects.
           </p>
         </div>
@@ -64,43 +79,43 @@ export default function Experience() {
           {/* Timeline line */}
           <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border"></div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {experiences.map((exp, index) => (
-              <div key={index} className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <div key={index} className={`relative flex flex-col md:flex-row gap-6 sm:gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                 {/* Timeline dot */}
                 <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 bg-primary rounded-full border-4 border-background"></div>
                 
                 {/* Content */}
                 <div className="flex-1 ml-12 md:ml-0">
                   <Card className="hover-elevate transition-all duration-300" data-testid={`card-experience-${index}`}>
-                    <CardHeader>
+                    <CardHeader className="pb-3 sm:pb-6">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                         <div>
-                          <CardTitle className="text-xl mb-1">{exp.position}</CardTitle>
-                          <div className="flex items-center gap-2 text-primary font-semibold">
+                          <CardTitle className="text-lg sm:text-xl mb-1">{exp.position}</CardTitle>
+                          <div className="flex items-center gap-2 text-primary font-semibold text-sm sm:text-base">
                             <Building2 className="h-4 w-4" />
                             {exp.company}
                           </div>
                         </div>
-                        <Badge variant="outline" className="whitespace-nowrap">
+                        <Badge variant="outline" className="whitespace-nowrap text-xs">
                           <Calendar className="h-3 w-3 mr-1" />
                           {exp.duration}
                         </Badge>
                       </div>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1 text-xs sm:text-sm text-muted-foreground">
                         <MapPin className="h-3 w-3" />
                         {exp.location}
                       </div>
-                      <p className="text-sm text-muted-foreground mt-2">{exp.description}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mt-2">{exp.description}</p>
                     </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
+                    <CardContent className="pt-0">
+                      <div className="space-y-3 sm:space-y-4">
                         <div>
-                          <h4 className="font-semibold mb-3">Key Achievements</h4>
-                          <ul className="space-y-2 text-sm text-muted-foreground">
+                          <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Key Achievements</h4>
+                          <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
                             {exp.achievements.map((achievement, achievementIndex) => (
                               <li key={achievementIndex} className="flex items-start gap-2">
-                                <span className="text-primary mt-1.5">•</span>
+                                <span className="text-primary mt-1.5 text-xs">•</span>
                                 <span>{achievement}</span>
                               </li>
                             ))}
@@ -108,8 +123,8 @@ export default function Experience() {
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold mb-3">Technologies Used</h4>
-                          <div className="flex flex-wrap gap-2">
+                          <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Technologies Used</h4>
+                          <div className="flex flex-wrap gap-1 sm:gap-2">
                             {exp.technologies.map((tech) => (
                               <Badge key={tech} variant="secondary" className="text-xs">
                                 {tech}

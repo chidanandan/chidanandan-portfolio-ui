@@ -41,44 +41,44 @@ export default function Hero() {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/20 pt-16">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="flex-1 text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
             <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
               <MapPin className="h-4 w-4 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">Bengaluru, India</span>
             </div>
             
-            <h1 className="text-4xl lg:text-6xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold mb-4">
               Hi, I'm <span className="text-primary">Chidanandan</span>
             </h1>
             
-            <div className="text-xl lg:text-2xl text-muted-foreground mb-6 h-8">
+            <div className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-6 h-6 sm:h-8">
               <span className="font-mono">{displayText}</span>
               <span className="animate-pulse">|</span>
             </div>
             
-            <p className="text-lg text-muted-foreground max-w-2xl mb-8">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mb-6 sm:mb-8">
               Software Engineer with <strong>8+ years</strong> of experience crafting modern web applications. 
               Specialized in React, NextJS, and micro-frontend architectures. Currently building 
               innovative pricing solutions at <strong>A.P. Moller - Maersk</strong>.
             </p>
             
-            <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
-              <Badge variant="secondary">React</Badge>
-              <Badge variant="secondary">NextJS</Badge>
-              <Badge variant="secondary">TypeScript</Badge>
-              <Badge variant="secondary">Micro-Frontends</Badge>
-              <Badge variant="secondary">AWS</Badge>
+            <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6 sm:mb-8">
+              <Badge variant="secondary" className="text-xs sm:text-sm">React</Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">NextJS</Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">TypeScript</Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">Micro-Frontends</Badge>
+              <Badge variant="secondary" className="text-xs sm:text-sm">AWS</Badge>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-              <Button size="lg" onClick={scrollToContact} data-testid="button-get-in-touch">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8">
+              <Button size="lg" onClick={scrollToContact} data-testid="button-get-in-touch" className="w-full sm:w-auto">
                 <Mail className="mr-2 h-4 w-4" />
                 Get In Touch
               </Button>
-              <Button size="lg" variant="outline" asChild data-testid="button-download-resume">
+              <Button size="lg" variant="outline" asChild data-testid="button-download-resume" className="w-full sm:w-auto">
                 <a href={resume} download="Chidanandan-Resume.pdf">
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
@@ -110,13 +110,13 @@ export default function Hero() {
             </div>
           </div>
           
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 order-1 lg:order-2 mb-6 lg:mb-0">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full blur-3xl"></div>
               <img
                 src={headshot}
                 alt="Chidanandan P - Software Engineer"
-                className="relative w-80 h-80 rounded-full object-cover border-4 border-card shadow-xl"
+                className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full object-cover border-4 border-card shadow-xl"
                 data-testid="img-headshot"
               />
             </div>

@@ -60,59 +60,89 @@ export default function Projects() {
       technologies: ["React", "PWA", "AMP", "Service Workers", "Google DFP", "Analytics"],
       icon: Globe,
       type: "Streaming Platform"
-    }
+    },
+    {
+      title: "Insurance Registration System",
+      company: "growthBox technologies pvt ltd.",
+      description: "Developed a comprehensive insurance-based web application providing solutions for customers (patients), insurance staff, and health service providers (hospitals/diagnostic centers). Included a sales person module for customer interaction and service delivery.",
+      achievements: [
+        "Built complete insurance registration and management system",
+        "Developed customer portal for patients to manage their insurance",
+        "Created admin interface for insurance staff and health service providers",
+        "Implemented sales person module for customer interaction and service delivery",
+        "Designed responsive web interface with user-friendly navigation"
+      ],
+      technologies: ["ASP.NET", "C#", "SQL Server", "HTML", "CSS", "JavaScript"],
+      icon: Users,
+      type: "Web Application"
+    },
+    {
+      title: "Smart Orb - Automobile Security System",
+      company: "Nitte Meenakshi Institute of Technology",
+      description: "An innovative automobile automation system using Arduino board and multiple modules, sensors, and actuators to provide complete security against automobile theft. Includes a supporting mobile application for remote monitoring and control.",
+      achievements: [
+        "Designed and implemented Arduino-based security system for automobiles",
+        "Integrated multiple sensors and actuators for comprehensive security",
+        "Developed mobile application for remote monitoring and control",
+        "Implemented real-time alerts and notifications for security breaches",
+        "Created user-friendly interface for system configuration and monitoring"
+      ],
+      technologies: ["Arduino", "C++", "Mobile App Development", "IoT", "Sensors", "Actuators"],
+      icon: Code2,
+      type: "IoT Project"
+    },
   ]
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-16 sm:py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Key Projects</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Key Projects</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             Highlighting some of the most impactful projects I've worked on throughout my career, 
             showcasing technical excellence and business value delivery.
           </p>
         </div>
 
-        <div className="grid gap-8">
+        <div className="grid gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <Card key={index} className="hover-elevate transition-all duration-300" data-testid={`card-project-${index}`}>
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
-                      <project.icon className="h-6 w-6 text-primary" />
+              <CardHeader className="pb-3 sm:pb-6">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="p-2 sm:p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                      <project.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <CardTitle className="text-xl">{project.title}</CardTitle>
-                        <Badge variant="outline" className="text-xs">{project.type}</Badge>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1">
+                        <CardTitle className="text-lg sm:text-xl">{project.title}</CardTitle>
+                        <Badge variant="outline" className="text-xs w-fit">{project.type}</Badge>
                       </div>
-                      <p className="text-primary font-medium text-sm">{project.company}</p>
+                      <p className="text-primary font-medium text-xs sm:text-sm">{project.company}</p>
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline" disabled data-testid={`button-project-${index}-demo`}>
-                      <ExternalLink className="h-4 w-4 mr-2" />
+                  <div className="flex gap-2 ml-12 sm:ml-0">
+                    <Button size="sm" variant="outline" disabled data-testid={`button-project-${index}-demo`} className="text-xs">
+                      <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                       Demo
                     </Button>
-                    <Button size="sm" variant="outline" disabled data-testid={`button-project-${index}-code`}>
-                      <Github className="h-4 w-4 mr-2" />
+                    <Button size="sm" variant="outline" disabled data-testid={`button-project-${index}-code`} className="text-xs">
+                      <Github className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                       Code
                     </Button>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-6">{project.description}</p>
+              <CardContent className="pt-0">
+                <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">{project.description}</p>
                 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <div>
-                    <h4 className="font-semibold mb-3">Key Achievements</h4>
-                    <ul className="grid sm:grid-cols-2 gap-2 text-sm text-muted-foreground">
+                    <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Key Achievements</h4>
+                    <ul className="grid sm:grid-cols-2 gap-1 sm:gap-2 text-xs sm:text-sm text-muted-foreground">
                       {project.achievements.map((achievement, achievementIndex) => (
                         <li key={achievementIndex} className="flex items-start gap-2">
-                          <span className="text-primary mt-1.5">•</span>
+                          <span className="text-primary mt-1.5 text-xs">•</span>
                           <span>{achievement}</span>
                         </li>
                       ))}
@@ -120,8 +150,8 @@ export default function Projects() {
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold mb-3">Technologies</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <h4 className="font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Technologies</h4>
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {project.technologies.map((tech) => (
                         <Badge key={tech} variant="secondary" className="text-xs">
                           {tech}
@@ -135,11 +165,11 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-6">
+        <div className="text-center mt-12 sm:mt-16">
+          <p className="text-muted-foreground mb-4 sm:mb-6 text-sm sm:text-base">
             Want to see more of my work? Check out my GitHub profile for additional projects and contributions.
           </p>
-          <Button variant="outline" size="lg" disabled data-testid="button-view-all-projects">
+          <Button variant="outline" size="lg" disabled data-testid="button-view-all-projects" className="text-sm sm:text-base">
             <Github className="mr-2 h-4 w-4" />
             View All Projects on GitHub
           </Button>
