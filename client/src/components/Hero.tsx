@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react"
+import { Github, Linkedin, Mail, Phone, MapPin, Download } from "lucide-react"
 import { useEffect, useState } from "react"
 import headshot from "@assets/chidu_1758191757660.jpeg"
+import resume from "@assets/Chidanandan-2024_1758191036054.pdf"
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("")
@@ -78,7 +79,8 @@ export default function Hero() {
                 Get In Touch
               </Button>
               <Button size="lg" variant="outline" asChild data-testid="button-download-resume">
-                <a href="#" onClick={(e) => e.preventDefault()}>
+                <a href={resume} download="Chidanandan-Resume.pdf">
+                  <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </a>
               </Button>

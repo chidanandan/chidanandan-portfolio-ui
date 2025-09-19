@@ -7,7 +7,7 @@ if (process.env.SENDGRID_API_KEY) {
   mailService.setApiKey(process.env.SENDGRID_API_KEY);
   console.log('SendGrid email service initialized');
 } else {
-  console.warn('SENDGRID_API_KEY not found. Email functionality will be disabled.');
+  console.log('Email functionality disabled (SENDGRID_API_KEY not configured)');
 }
 
 interface ContactFormData {
@@ -49,9 +49,12 @@ Message:
 ${formData.message}
     `;
 
+    const toEmail = process.env.TO_EMAIL || 'chidutramp@gmail.com';
+    const fromEmail = process.env.FROM_EMAIL || 'chidutramp@gmail.com';
+
     const emailConfig = {
-      to: 'chidutramp@gmail.com', // Your email
-      from: 'chidutramp@gmail.com', // Must be verified sender in SendGrid
+      to: toEmail,
+      from: fromEmail, // Must be verified sender in SendGrid
       subject: `Portfolio Contact: ${formData.subject}`,
       text: emailText,
       html: emailHtml,
