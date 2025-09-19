@@ -5,6 +5,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react"
 import { useState } from "react"
+import { useMutation } from "@tanstack/react-query"
+import { apiRequest } from "@/lib/queryClient"
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -14,6 +16,33 @@ export default function Contact() {
     message: ''
   })
 
+  const contactMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to send message");
+      }
+      
+      return response.json();
+    },
+    onSuccess: () => {
+      alert('Thank you for your message! I\'ll get back to you soon.')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    },
+    onError: (error: any) => {
+      console.error('Contact form error:', error)
+      alert(error?.message || 'Failed to send message. Please try again.')
+    }
+  })
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -21,10 +50,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Contact form submitted:', formData)
-    // TODO: Implement actual form submission
-    alert('Thank you for your message! I\'ll get back to you soon.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    contactMutation.mutate(formData)
   }
 
   const contactInfo = [
@@ -182,9 +208,14 @@ export default function Contact() {
                   />
                 </div>
                 
-                <Button type="submit" className="w-full" data-testid="button-send-message">
+                <Button 
+                  type="submit" 
+                  className="w-full" 
+                  disabled={contactMutation.isPending}
+                  data-testid="button-send-message"
+                >
                   <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                  {contactMutation.isPending ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </CardContent>
