@@ -1,10 +1,14 @@
-const express = require("express");
-const helmet = require("helmet");
-const cors = require("cors");
-const rateLimit = require("express-rate-limit");
-const dotenv = require("dotenv");
-const { z } = require("zod");
-const path = require("path");
+import express from "express";
+import helmet from "helmet";
+import cors from "cors";
+import rateLimit from "express-rate-limit";
+import dotenv from "dotenv";
+import { z } from "zod";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
@@ -144,4 +148,4 @@ app.use((err, _req, res, _next) => {
   });
 });
 
-module.exports = app;
+export default app;
