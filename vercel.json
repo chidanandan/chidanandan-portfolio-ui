@@ -1,18 +1,21 @@
 {
-  "buildCommand": "yarn build",
-  "outputDirectory": "dist/public",
-  "functions": {
-    "dist/index.js": {
-      "runtime": "nodejs18.x"
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": {
+        "buildCommand": "yarn build"
+      }
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "/dist/index.js"
     },
     {
-      "src": "/health", 
+      "src": "/health",
       "dest": "/dist/index.js"
     },
     {
