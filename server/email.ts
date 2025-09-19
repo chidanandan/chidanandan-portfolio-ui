@@ -1,11 +1,14 @@
 import { MailService } from '@sendgrid/mail';
 
-if (!process.env.SENDGRID_API_KEY) {
-  throw new Error("SENDGRID_API_KEY environment variable must be set");
-}
+let mailService: MailService | null = null;
 
-const mailService = new MailService();
-mailService.setApiKey(process.env.SENDGRID_API_KEY);
+if (process.env.SENDGRID_API_KEY) {
+  mailService = new MailService();
+  mailService.setApiKey(process.env.SENDGRID_API_KEY);
+  console.log('SendGrid email service initialized');
+} else {
+  console.warn('SENDGRID_API_KEY not found. Email functionality will be disabled.');
+}
 
 interface ContactFormData {
   name: string;
@@ -15,6 +18,16 @@ interface ContactFormData {
 }
 
 export async function sendContactEmail(formData: ContactFormData): Promise<boolean> {
+  // If SendGrid is not configured, log the contact form submission instead
+  if (!mailService) {
+    console.log('Contact form submission received (SendGrid not configured):');
+    console.log(`Name: ${formData.name}`);
+    console.log(`Email: ${formData.email}`);
+    console.log(`Subject: ${formData.subject}`);
+    console.log(`Message: ${formData.message}`);
+    return false; // Return false to indicate email wasn't sent
+  }
+
   try {
     const emailHtml = `
       <h2>New Contact Form Submission</h2>
