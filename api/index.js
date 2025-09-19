@@ -13,7 +13,6 @@ const __dirname = path.dirname(__filename);
 // Load environment variables
 dotenv.config();
 
-// Force rebuild timestamp: 2025-09-19 16:30
 
 const app = express();
 
